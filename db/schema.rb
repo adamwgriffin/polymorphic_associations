@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190924232800) do
+ActiveRecord::Schema.define(version: 20190925002133) do
 
   create_table "company", primary_key: "companyid", force: :cascade do |t|
     t.text     "companyname"
@@ -20,13 +20,17 @@ ActiveRecord::Schema.define(version: 20190924232800) do
   end
 
   create_table "facebook_page_connection", primary_key: "facebook_page_connection_id", force: :cascade do |t|
-    t.integer  "userid",                              null: false
-    t.text     "page_id",                             null: false
-    t.text     "approval_status", default: "pending", null: false
+    t.integer  "userid",                               null: false
+    t.text     "page_id",                              null: false
+    t.text     "approval_status",  default: "pending", null: false
     t.text     "url"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "connectable_id"
+    t.string   "connectable_type"
   end
+
+  add_index "facebook_page_connection", ["connectable_id"], name: "idx_facebook_page_connection_on_connectable_id"
 
   create_table "organization", primary_key: "organizationid", force: :cascade do |t|
     t.text     "organizationname"
