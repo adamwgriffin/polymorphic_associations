@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20190924232800) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "facebook_page_connections", primary_key: "facebook_page_connection_id", force: :cascade do |t|
+  create_table "facebook_page_connection", primary_key: "facebook_page_connection_id", force: :cascade do |t|
     t.integer  "userid",                              null: false
     t.text     "page_id",                             null: false
     t.text     "approval_status", default: "pending", null: false
