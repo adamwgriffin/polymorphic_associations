@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191029193951) do
+ActiveRecord::Schema.define(version: 20191029223642) do
 
   create_table "ad_campagin", primary_key: "ad_campaign_id", force: :cascade do |t|
     t.integer  "companyid",  null: false
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20191029193951) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "ad_campaign_entities", primary_key: "ad_campaign_entities_id", force: :cascade do |t|
+    t.integer  "ad_campaign_id"
+    t.string   "entity_type"
+    t.integer  "entity_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "ad_campaign_entities", ["ad_campaign_entities_id"], name: "ix_ad_campaign_entities_ad_campaign_entities_id"
 
   create_table "company", primary_key: "companyid", force: :cascade do |t|
     t.text     "companyname"
