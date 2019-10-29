@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20190925002133) do
   end
 
   create_table "facebook_page_connection", primary_key: "facebook_page_connection_id", force: :cascade do |t|
-    t.integer  "userid",                               null: false
     t.text     "page_id",                              null: false
     t.text     "approval_status",  default: "pending", null: false
     t.text     "url"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 20190925002133) do
     t.datetime "updated_at",                           null: false
     t.integer  "connectable_id"
     t.string   "connectable_type"
+    t.integer  "userid"
   end
 
   add_index "facebook_page_connection", ["connectable_id"], name: "idx_facebook_page_connection_on_connectable_id"
