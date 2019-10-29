@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191029223642) do
+ActiveRecord::Schema.define(version: 20191029224253) do
 
   create_table "ad_campagin", primary_key: "ad_campaign_id", force: :cascade do |t|
     t.integer  "companyid",  null: false
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 20191029223642) do
   end
 
   add_index "facebook_page_connection", ["connectable_id"], name: "idx_facebook_page_connection_on_connectable_id"
+
+  create_table "office", primary_key: "officeid", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "organization", primary_key: "organizationid", force: :cascade do |t|
     t.text     "organizationname"
