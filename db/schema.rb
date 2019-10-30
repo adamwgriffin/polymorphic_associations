@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191029224253) do
+ActiveRecord::Schema.define(version: 20191030174115) do
 
   create_table "ad_campaign", primary_key: "ad_campaign_id", force: :cascade do |t|
     t.integer  "companyid",  null: false
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20191029224253) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "ad_campaign_scope", primary_key: "ad_campaign_scope_id", force: :cascade do |t|
+    t.integer  "ad_campaign_id", null: false
+    t.string   "scopeable_type", null: false
+    t.integer  "scopeable_id",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "ad_campaign_scope", ["ad_campaign_id"], name: "ix_ad_campaign_scope_ad_campaign_id"
+  add_index "ad_campaign_scope", ["ad_campaign_scope_id"], name: "ix_ad_campaign_scope_ad_campaign_scope_id"
 
   create_table "company", primary_key: "companyid", force: :cascade do |t|
     t.text     "companyname"
