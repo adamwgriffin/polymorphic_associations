@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20191029224253) do
 
-  create_table "ad_campagin", primary_key: "ad_campaign_id", force: :cascade do |t|
+  create_table "ad_campaign", primary_key: "ad_campaign_id", force: :cascade do |t|
     t.integer  "companyid",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
