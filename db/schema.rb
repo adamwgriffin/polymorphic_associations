@@ -25,16 +25,6 @@ ActiveRecord::Schema.define(version: 20191029224253) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "ad_campaign_entities", primary_key: "ad_campaign_entities_id", force: :cascade do |t|
-    t.integer  "ad_campaign_id"
-    t.string   "entity_type"
-    t.integer  "entity_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "ad_campaign_entities", ["ad_campaign_entities_id"], name: "ix_ad_campaign_entities_ad_campaign_entities_id"
-
   create_table "company", primary_key: "companyid", force: :cascade do |t|
     t.text     "companyname"
     t.datetime "created_at",  null: false
