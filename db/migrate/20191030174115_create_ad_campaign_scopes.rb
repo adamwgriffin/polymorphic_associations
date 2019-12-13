@@ -5,7 +5,13 @@ class CreateAdCampaignScopes < ActiveRecord::Migration
       t.integer :ad_campaign_id, null: false
       t.string :scopeable_type, null: false
       t.integer :scopeable_id, null: false
-      t.timestamps null: false
+      # we can't do this simple timestamps column
+      # t.timestamps null: false
+
+      # use this instead of timestamps
+      t.integer :lock_version, default: 0
+      t.timestamp :lastmodified
+      t.timestamp :created
     end
 
     # we also need an index for the polymorphic association
