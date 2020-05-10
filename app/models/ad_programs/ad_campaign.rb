@@ -13,13 +13,13 @@ module AdPrograms
     has_many :regions, through: :ad_campaign_scope, source: :scopeable, source_type: 'Region'
     has_many :offices, through: :ad_campaign_scope, source: :scopeable, source_type: 'Office'
 
-    # need to figure out how to make something like this work for scopeable_type and scopeable_id:
-    # where( arel_table[max_field].gteq(value).or( arel_table[max_field].eq(nil) ) )
-    def self.campaigns_for_user(user_scopes)
-      AdPrograms::AdCampaign.
+    scope :campaigns_for_type, lambda { |campaign_type, entitiy_ids|
+      self.
         joins(:ad_campaign_scope).
         includes(:ad_campaign_criterium).
-        where({ ad_campaign_scope: { scopeable_type: @campaign_type, scopeable_id: @entitiy_ids } })
-    end
+        where({ ad_campaign_scope: { scopeable_type: campaign_type, scopeable_id: entitiy_ids } })
+    }
+
+
   end
 end
